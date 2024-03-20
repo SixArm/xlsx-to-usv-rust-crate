@@ -1,12 +1,12 @@
 use std::path::Path;
 use usv::style::Style;
 use calamine::{
-    open_workbook, 
-    open_workbook_from_rs, 
+    open_workbook,
+    open_workbook_from_rs,
     DataType,
-    Error, 
-    Xlsx, 
-    Reader, 
+    Error,
+    Xlsx,
+    Reader,
     RangeDeserializerBuilder
 };
 

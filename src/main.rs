@@ -129,12 +129,11 @@ use usv::style::Style;
 fn main() -> std::io::Result<()> {
     let args: crate::app::args::Args = crate::app::clap::clap();
     if args.test { println!("{:?}", args); }
-    let style = Style::default();
     let mut stdin = stdin().lock();
     let mut buf: Vec<u8> = Vec::new();
     stdin.read_to_end(&mut buf)?;
     let mut cursor = std::io::Cursor::new(buf);
-    match xlsx_to_usv::xlsx_reader_to_usv(cursor, &style) {
+    match xlsx_to_usv::xlsx_reader_to_usv(cursor, &args.style) {
         Ok(s) => {
             println!("{}", &s);
         },

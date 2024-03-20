@@ -30,6 +30,11 @@ pub static COMMAND_OS: Lazy<OsString> = Lazy::new(||
 );
 
 #[allow(dead_code)]
+pub static EXAMPLE_XLSX_GROUPS: Lazy<Vec<u8>> = Lazy::new(||
+    std::fs::read(&TESTS_DIR.join("example1.xlsx")).expect("EXAMPLE_XLSX_GROUPS")
+);
+
+#[allow(dead_code)]
 fn assert_str_contains(outer: &str, inner: &str) {
     assert!(
         outer.contains(inner),
