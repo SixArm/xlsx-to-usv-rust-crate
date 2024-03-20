@@ -1,3 +1,4 @@
+use log::*;
 use std::path::Path;
 use usv::style::Style;
 use calamine::{
@@ -7,7 +8,6 @@ use calamine::{
     Error,
     Xlsx,
     Reader,
-    RangeDeserializerBuilder
 };
 
 pub fn xlsx_file_to_usv<
@@ -16,6 +16,7 @@ pub fn xlsx_file_to_usv<
     path: P,
     style: &Style,
 ) -> Result<String, Error> {
+    trace!("xlsx_file_to_usv");
     let workbook: Xlsx<_> = open_workbook(path)?;
     xlsx_workbook_to_usv(workbook, style)
 }
@@ -26,6 +27,7 @@ pub fn xlsx_reader_to_usv<
     rs: RS,
     style: &Style,
 ) -> Result<String, Error> {
+    trace!("xlsx_reader_to_usv");
     let workbook: Xlsx<_> = open_workbook_from_rs(rs)?;
     xlsx_workbook_to_usv(workbook, style)
 }
@@ -36,9 +38,11 @@ pub fn xlsx_workbook_to_usv<
     mut workbook: Xlsx<RS>,
     style: &Style,
 ) -> Result<String, Error> {
+    trace!("xlsx_workbook_to_usv");
     let worksheets = workbook.worksheets();
     let mut s = String::new();
     for worksheet in worksheets {
+        trace!("worksheet");
         s += &xlsx_worksheet_to_usv(worksheet, style)?;
         s += &style.group_separator;
     }
@@ -49,11 +53,14 @@ pub fn xlsx_worksheet_to_usv(
     worksheet: (String, calamine::Range<calamine::Data>),
     style: &Style,
 ) -> Result<String, Error> {
+    trace!("xlsx_worksheet_to_usv");
     let (name, range) = worksheet;
+    trace!("name: {}", name);
     let mut s = String::new();
     for row in range.rows() {
         for data in row {
             let unit = data.as_string().unwrap_or(String::from(""));
+            trace!("unit: {}", unit);
             s += &format!("{}{}", unit, style.unit_separator);
         }
         s += &style.record_separator;
@@ -63,6 +70,5 @@ pub fn xlsx_worksheet_to_usv(
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    // See ./tests for integration tests
+    // ./tests
 }

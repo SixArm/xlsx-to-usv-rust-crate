@@ -12,7 +12,8 @@ pub static BENCHES_DIR: Lazy<PathBuf> = Lazy::new(||
 use criterion::{criterion_group, criterion_main, Criterion};
 
 fn bench_example(c: &mut Criterion){
-    let path = BENCHES_DIR.join("example1.xls");
+    let path = BENCHES_DIR.join("example.xls");
+    
     let style = Style::default();
     let mut group = c.benchmark_group(
         &format!("benchmark group path: {:?}", &path)

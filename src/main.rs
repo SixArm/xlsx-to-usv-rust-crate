@@ -113,8 +113,8 @@
 //! * Contact: Joel Parker Henderson (joel@sixarm.com)
 
 //// log
-#[macro_use]
-extern crate log;
+//#[macro_use]
+extern crate log; use log::*;
 extern crate env_logger;
 
 use std::io::{Read, stdin};
@@ -124,9 +124,9 @@ pub mod app {
     pub mod clap;
     pub mod log;
 }
-use usv::style::Style;
 
 fn main() -> std::io::Result<()> {
+    trace!("main");
     let args: crate::app::args::Args = crate::app::clap::clap();
     if args.test { println!("{:?}", args); }
     let mut stdin = stdin().lock();
@@ -138,7 +138,7 @@ fn main() -> std::io::Result<()> {
             println!("{}", &s);
         },
         Err(e) => {
-            eprintln!("Application error: {e}");
+            error!("{e}");
             std::process::exit(1);
         }
     }
