@@ -106,25 +106,6 @@ g␟h␟␞
 ␝
 ```
 
-If your fonts are small, then you may prefer to style the output with braces:
-
-```sh
-cat example.xlsx | xlsx-to-usv --style-braces
-```
-
-Output:
-
-```usv
-Worksheet 1{US}{RS}
-a{US}b{US}{RS}
-c{US}d{US}{RS}
-{GS}
-Worksheet 2{US}{RS}
-e{US}f{US}{RS}
-g{US}h{US}{RS}
-{GS}
-```
-
 If you prefer ASCII Separated Values (ASV) with zero-width character controls:
 
 Run:
@@ -137,6 +118,18 @@ Output:
 
 ```usv
 Worksheet 1\u001F\u001Ea\u001Fb\u001F\u001Ec\u001Fd\u001F\u001E\u001DWorksheet 2\u001F\u001Ee\u001Ff\u001F\u001Eg\u001Fh\u001F\u001E\u001D
+```
+
+If you prefer to render markers with braces, to see the markers more easily:
+
+```sh
+cat example.xlsx | xlsx-to-usv --style-braces
+```
+
+Output:
+
+```usv
+Worksheet 1{US}{RS}a{US}b{US}{RS}c{US}d{US}{RS}{GS}Worksheet 2{US}{RS}e{US}f{US}{RS}g{US}h{US}{RS}{GS}
 ```
 
 For more, see the official repository:<br> 
