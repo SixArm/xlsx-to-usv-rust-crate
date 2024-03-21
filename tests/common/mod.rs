@@ -4,6 +4,7 @@ use std::ffi::OsString;
 use std::path::PathBuf;
 use once_cell::sync::Lazy;
 use std::path::Path;
+use xlsx_to_usv::examples::*;
 
 ////
 //

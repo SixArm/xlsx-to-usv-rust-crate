@@ -647,9 +647,9 @@ checksum = "3354b9ac3fae1ff6755cb6db53683adb661634f67557942dea4facebec0fee4b"
 
 [[package]]
 name = "usv"
-version = "0.13.4"
+version = "0.13.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ae94ae2f6032a186af75b039071482038ced9fb011e1c45ee78fd25b2eaa33b5"
+checksum = "a2534ce53bf62f2e941505c336c4a8b438bd4619b6648611eefc18e10688e569"
 
 [[package]]
 name = "utf8parse"
@@ -836,7 +836,7 @@ checksum = "32b752e52a2da0ddfbdbcc6fceadfeede4c939ed16d13e648833a61dfb611ed8"
 
 [[package]]
 name = "xlsx-to-usv"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "calamine",
  "clap",

@@ -9,6 +9,7 @@ use calamine::{
     Xlsx,
     Reader,
 };
+pub mod examples;
 
 pub fn xlsx_file_to_usv<
     P: AsRef<Path> + Sized,
@@ -57,6 +58,7 @@ pub fn xlsx_worksheet_to_usv(
     let (name, range) = worksheet;
     trace!("name: {}", name);
     let mut s = String::new();
+    s += &format!("{}{}{}", name, style.unit_separator, style.record_separator);
     for row in range.rows() {
         for data in row {
             let unit = data.as_string().unwrap_or(String::from(""));
