@@ -66,14 +66,23 @@
 //! 
 //! ## Example
 //! 
+//! Excel and USV have similar data concepts:
+//! 
+//! | Excel     | USV    |
+//! |-----------|--------|
+//! | Workbook  | File   |
+//! | Worksheet | Group  |
+//! | Row       | Record |
+//! | Cell      | Unit   |
+//! 
 //! Suppose file example.xlsx contains this kind of data:
 //! 
 //! ```xlsx
-//! Sheet 1
+//! Worksheet 1
 //! a,b
 //! c,d
 //! 
-//! Sheet 2
+//! Worksheet 2
 //! d,e
 //! f,g
 //! ```
@@ -87,15 +96,53 @@
 //! Output:
 //! 
 //! ```usv
-//! Sheet1␟␞
+//! Worksheet 1␟␞
 //! a␟b␟␞
 //! c␟d␟␞
-//! ␞
-//! Sheet2␟␞
+//! ␝
+//! Worksheet 2␟␞
 //! e␟f␟␞
 //! g␟h␟␞
-//! ␞
+//! ␝
 //! ```
+//! 
+//! If your fonts are small, then you may prefer to style the output with braces, so the display shows the Unit Separator as {US}, Record Separator as {RS}, Group Separator as {GS}.
+//! 
+//! Run:
+//! 
+//! ```sh
+//! cat example.xlsx | xlsx-to-usv --style-braces
+//! ```
+//! 
+//! Output:
+//! 
+//! ```usv
+//! Worksheet 1{US}{RS}
+//! a{US}b{US}{RS}
+//! c{US}d{US}{RS}
+//! {GS}
+//! Worksheet 2{US}{RS}
+//! e{US}f{US}{RS}
+//! g{US}h{US}{RS}
+//! {GS}
+//! ```
+//! 
+//! If you prefer ASCII Separated Values (ASV) that use zero-width control characters, then you may style the output with controls. The style braces display the Unit Separator as \u001F, the Record Separator as \u001E, the Group Separator as \u001D.
+//! 
+//! Run:
+//! 
+//! ```sh
+//! cat example.xlsx | xlsx-to-usv --style-controls
+//! ```
+//! 
+//! Output:
+//! 
+//! ```usv
+//! Worksheet 1\u001F\u001Ea\u001Fb\u001F\u001Ec\u001Fd\u001F\u001E\u001DWorksheet 2\u001F\u001Ee\u001Ff\u001F\u001Eg\u001Fh\u001F\u001E\u001D
+//! ```
+//! 
+//! For more, browse the main repo:<br> 
+//! [Unicode Separated Values (USV)](https://github.com/sixarm/usv)
 //! 
 //! ## FAQ
 //! 
@@ -116,10 +163,6 @@
 //! 
 //! Yes: [usv-to-xlsx](https://crates.io/crates/usv-to-xlsx).
 //! 
-//! ### Why use USV instead of XLSX?
-//! 
-//! See the documentation for [USV](https://github.com/sixarm/usv).
-//! 
 //! ### Is USV aiming to become a standard?
 //! 
 //! Yes, USV is submitted to IETF.org as an Internet-Draft work in progress:
@@ -132,7 +175,7 @@
 //! ## Tracking
 //! 
 //! * Package: xlsx-to-usv-rust-crate
-//! * Version: 0.3.0
+//! * Version: 1.0.0
 //! * Created: 2024-03-09T13:33:20Z
 //! * Updated: 2024-03-21T14:05:26Z
 //! * License: MIT or Apache-2.0 or GPL-2.0 or GPL-3.0 or contact us for more

@@ -66,14 +66,23 @@ Link: [https://crates.io/crates/xlsx-to-usv](https://crates.io/crates/xlsx-to-us
 
 ## Example
 
+Excel and USV have similar data concepts:
+
+| Excel     | USV    |
+|-----------|--------|
+| Workbook  | File   |
+| Worksheet | Group  |
+| Row       | Record |
+| Cell      | Unit   |
+
 Suppose file example.xlsx contains this kind of data:
 
 ```xlsx
-Sheet 1
+Worksheet 1
 a,b
 c,d
 
-Sheet 2
+Worksheet 2
 d,e
 f,g
 ```
@@ -87,15 +96,51 @@ cat example.xlsx | xlsx-to-usv --style-sheets
 Output:
 
 ```usv
-Sheet1␟␞
+Worksheet 1␟␞
 a␟b␟␞
 c␟d␟␞
-␞
-Sheet2␟␞
+␝
+Worksheet 2␟␞
 e␟f␟␞
 g␟h␟␞
-␞
+␝
 ```
+
+If your fonts are small, then you may prefer to style the output with braces:
+
+```sh
+cat example.xlsx | xlsx-to-usv --style-braces
+```
+
+Output:
+
+```usv
+Worksheet 1{US}{RS}
+a{US}b{US}{RS}
+c{US}d{US}{RS}
+{GS}
+Worksheet 2{US}{RS}
+e{US}f{US}{RS}
+g{US}h{US}{RS}
+{GS}
+```
+
+If you prefer ASCII Separated Values (ASV) with zero-width character controls:
+
+Run:
+
+```sh
+cat example.xlsx | xlsx-to-usv --style-controls
+```
+
+Output:
+
+```usv
+Worksheet 1\u001F\u001Ea\u001Fb\u001F\u001Ec\u001Fd\u001F\u001E\u001DWorksheet 2\u001F\u001Ee\u001Ff\u001F\u001Eg\u001Fh\u001F\u001E\u001D
+```
+
+For more, see the official repository:<br> 
+[Unicode Separated Values (USV)](https://github.com/sixarm/usv)
 
 ## FAQ
 
@@ -115,10 +160,6 @@ variety of human languages.
 ### Is there a similar command to convert from USV to XLSX?
 
 Yes: [usv-to-xlsx](https://crates.io/crates/usv-to-xlsx).
-
-### Why use USV instead of XLSX?
-
-See the documentation for [USV](https://github.com/sixarm/usv).
 
 ### Is USV aiming to become a standard?
 
