@@ -14,7 +14,7 @@ fn command_with_custom_separators_with_short_options() {
         .arg("-z").arg("{EOT}")
         , &EXAMPLE_XLSX_GROUPS
     );
-    assert_eq!(actual, format!("{}\n", EXAMPLE_STYLE_BRACES_GROUPS));
+    assert_eq!(actual, format!("{}\n", EXAMPLE_GROUPS_STYLE_BRACES));
 }
 
 #[test]
@@ -29,5 +29,5 @@ fn command_with_custom_separators_with_long_options() {
         .arg("--eot").arg("{EOT}")
         , &EXAMPLE_XLSX_GROUPS
     );
-    assert_eq!(actual, format!("{}\n", EXAMPLE_STYLE_BRACES_GROUPS));
+    assert_eq!(actual, format!("{}\n", EXAMPLE_GROUPS_STYLE_BRACES));
 }

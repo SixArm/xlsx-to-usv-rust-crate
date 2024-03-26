@@ -1,6 +1,6 @@
 [package]
 name = "xlsx-to-usv"
-version = "1.2.0"
+version = "1.2.1"
 edition = "2021"
 authors = ["Joel Parker Henderson <joel@joelparkerhenderson.com>"]
 description = "XLSX to USV: Convert Microsoft Excel (XLSX) to Unicode Separated Values (USV) for data markup, including for spreadsheets, databases, text files, and more."
@@ -18,7 +18,7 @@ categories = ["command-line-utilities", "encoding", "data-structures", "parsing"
 calamine = "0.24"
 
 # usv: Unicode Separated Values
-usv = "0.13.12"
+usv = "0.15"
 
 # clap: Command Line Argument Parser
 clap = { version = "4.5.2", features = ["cargo"] }
