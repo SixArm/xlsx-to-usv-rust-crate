@@ -1,6 +1,10 @@
 # xlsx-to-usv
 
-Convert Microsoft Excel (XLSX) to [Unicode Separated Values (USV)](https://github.com/sixarm/usv).
+Convert
+[Microsoft Excel (XLSX)](https://github.com/SixArm/usv/tree/main/doc/comparisons/xlsx)
+to
+[Unicode Separated Values (USV)](https://github.com/sixarm/usv).
+Built with the [USV Rust crate](https://crates.io/crate/usv).
 
 Syntax:
 
