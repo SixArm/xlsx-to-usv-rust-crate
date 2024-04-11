@@ -1,6 +1,6 @@
 [package]
 name = "xlsx-to-usv"
-version = "1.2.2"
+version = "1.2.3"
 edition = "2021"
 authors = ["Joel Parker Henderson <joel@joelparkerhenderson.com>"]
 description = "XLSX to USV: Convert Microsoft Excel (XLSX) to Unicode Separated Values (USV) for data markup, including for spreadsheets, databases, text files, and more."
@@ -14,11 +14,11 @@ categories = ["command-line-utilities", "encoding", "data-structures", "parsing"
 
 [dependencies]
 
+# usv: Unicode Separated Values
+usv = "0.19.1"
+
 # calamine: An Excel/OpenDocument Spreadsheets file reader/deserializer, in pure Rust.
 calamine = "0.24"
-
-# usv: Unicode Separated Values
-usv = "0.17.1"
 
 # clap: Command Line Argument Parser
 clap = { version = "4.5.2", features = ["cargo"] }
