@@ -1,6 +1,6 @@
 [package]
 name = "xlsx-to-usv"
-version = "1.2.3"
+version = "1.2.4"
 edition = "2021"
 authors = ["Joel Parker Henderson <joel@joelparkerhenderson.com>"]
 description = "XLSX to USV: Convert Microsoft Excel (XLSX) to Unicode Separated Values (USV) for data markup, including for spreadsheets, databases, text files, and more."
